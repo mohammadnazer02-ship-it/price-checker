@@ -11,17 +11,49 @@
 
   <body>
     <div class="container">
-      <div class="logo">🛒</div>
+      <!-- شعار السوبر ماركت -->
+      <div class="logo">
+        <img src="logo.png.png" alt="شعار السوبر ماركت" />
+      </div>
 
       <h1>معرفة سعر المنتج</h1>
 
       <p class="description">امسح باركود المنتج لمعرفة سعره</p>
 
-      <button id="scanButton">📷 مسح الباركود</button>
+      <!-- مسح بالكاميرا -->
+      <button id="scanButton" class="main-button">📷 مسح الباركود</button>
 
+      <!-- إدخال يدوي -->
+      <button id="manualButton" class="secondary-button">
+        ⌨️ إدخال الباركود يدوياً
+      </button>
+
+      <div id="manualInput" class="manual-input">
+        <input
+          type="text"
+          id="barcodeInput"
+          placeholder="اكتب رقم الباركود"
+          inputmode="numeric"
+        />
+
+        <button id="searchButton" class="search-button">🔎 بحث</button>
+      </div>
+
+      <!-- الكاميرا -->
       <div id="reader"></div>
 
+      <!-- النتيجة -->
       <div id="result"></div>
+
+      <!-- حقوق الموقع -->
+      <footer class="footer">
+        <div>جميع الحقوق محفوظة</div>
+
+        <div>
+          تم تطوير هذا الموقع بواسطة
+          <strong>Mohammad Albouch</strong>
+        </div>
+      </footer>
     </div>
 
     <script src="https://unpkg.com/html5-qrcode"></script>

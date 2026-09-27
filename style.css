@@ -4,35 +4,72 @@
 
 body {
   margin: 0;
+
   font-family: Arial, sans-serif;
-  background: #f4f6f8;
+
+  background: #0b0b0b;
+
+  color: white;
+
   min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 20px;
 }
 
 .container {
-  width: 92%;
+  width: 100%;
+
   max-width: 500px;
 
-  margin: 40px auto;
-
-  padding: 30px 20px;
+  padding: 35px 25px;
 
   text-align: center;
 
-  background: white;
+  background: #151515;
+
+  border: 1px solid #c9a227;
 
   border-radius: 24px;
 
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 30px rgba(201, 162, 39, 0.15);
 }
 
+/* =========================
+   LOGO
+========================= */
+
 .logo {
-  font-size: 50px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
+
+.logo img {
+  width: 150px;
+
+  max-width: 65%;
+
+  height: auto;
+
+  object-fit: contain;
+
+  display: block;
+
+  margin: 0 auto;
+}
+
+/* =========================
+   TITLE
+========================= */
 
 h1 {
   margin: 0;
+
+  color: #d4af37;
 
   font-size: 28px;
 }
@@ -40,36 +77,118 @@ h1 {
 .description {
   margin-top: 12px;
 
-  color: #666;
+  color: #bdbdbd;
 
   font-size: 17px;
+
+  line-height: 1.6;
 }
+
+/* =========================
+   BUTTONS
+========================= */
 
 button {
   width: 100%;
 
-  padding: 17px;
-
-  margin-top: 20px;
+  padding: 16px;
 
   border: none;
 
   border-radius: 14px;
 
-  background: #222;
-
-  color: white;
-
-  font-size: 19px;
+  font-size: 18px;
 
   font-weight: bold;
 
   cursor: pointer;
+
+  transition: 0.2s;
 }
 
-button:hover {
-  opacity: 0.9;
+.main-button {
+  margin-top: 20px;
+
+  background: #d4af37;
+
+  color: #111;
 }
+
+.main-button:hover {
+  background: #f0cf5c;
+
+  transform: translateY(-1px);
+}
+
+.secondary-button {
+  margin-top: 12px;
+
+  background: transparent;
+
+  color: #d4af37;
+
+  border: 1px solid #d4af37;
+}
+
+.secondary-button:hover {
+  background: #d4af37;
+
+  color: #111;
+}
+
+/* =========================
+   MANUAL INPUT
+========================= */
+
+.manual-input {
+  display: none;
+
+  margin-top: 15px;
+}
+
+.manual-input input {
+  width: 100%;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  border: 1px solid #555;
+
+  background: #0f0f0f;
+
+  color: white;
+
+  font-size: 18px;
+
+  text-align: center;
+
+  outline: none;
+}
+
+.manual-input input::placeholder {
+  color: #888;
+}
+
+.manual-input input:focus {
+  border-color: #d4af37;
+}
+
+.search-button {
+  margin-top: 10px;
+
+  background: #d4af37;
+
+  color: #111;
+}
+
+.search-button:hover {
+  background: #f0cf5c;
+}
+
+/* =========================
+   CAMERA
+========================= */
 
 #reader {
   width: 100%;
@@ -77,26 +196,40 @@ button:hover {
   margin-top: 25px;
 }
 
+#reader video {
+  border-radius: 15px;
+}
+
+/* =========================
+   RESULT
+========================= */
+
 #result {
   margin-top: 25px;
 }
+
+/* PRODUCT */
 
 .product {
   padding: 25px;
 
   border-radius: 18px;
 
-  background: #f5f7f9;
+  background: #0f0f0f;
+
+  border: 1px solid #d4af37;
 }
 
 .product h2 {
   margin-top: 0;
 
+  color: #ffffff;
+
   font-size: 23px;
 }
 
 .price-label {
-  color: #666;
+  color: #aaa;
 
   font-size: 16px;
 
@@ -106,37 +239,95 @@ button:hover {
 .price {
   margin-top: 5px;
 
+  color: #d4af37;
+
   font-size: 38px;
 
   font-weight: bold;
 }
 
+/* NEW SCAN */
+
 .new-scan {
   margin-top: 20px;
+
+  background: #d4af37;
+
+  color: #111;
 }
+
+/* NOT FOUND */
 
 .not-found {
   padding: 22px;
 
   border-radius: 18px;
 
-  background: #fff1f1;
+  background: #1b1515;
+
+  border: 1px solid #8b2020;
 }
 
 .not-found h2 {
   margin-top: 0;
+
+  color: #ff6b6b;
 }
+
+/* ERROR */
 
 .error {
   padding: 20px;
 
   border-radius: 18px;
 
-  background: #fff1f1;
+  background: #1b1515;
 
-  color: #b00020;
+  color: #ff6b6b;
+
+  border: 1px solid #8b2020;
 }
+
+/* LOADING */
 
 .loading {
   padding: 20px;
+
+  color: #d4af37;
+}
+
+#result p {
+  color: #d4af37;
+}
+
+/* =========================
+   FOOTER / COPYRIGHT
+========================= */
+
+.footer {
+  margin-top: 35px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #333;
+
+  color: #777;
+
+  font-size: 12px;
+
+  line-height: 1.8;
+}
+
+.footer .copyright {
+  color: #d4af37;
+
+  font-size: 13px;
+
+  font-weight: bold;
+
+  margin-bottom: 3px;
+}
+
+.footer strong {
+  color: #aaa;
 }

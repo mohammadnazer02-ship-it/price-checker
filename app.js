@@ -5,18 +5,32 @@ const result = document.getElementById("result");
 
 const scanButton = document.getElementById("scanButton");
 
+const manualButton = document.getElementById("manualButton");
+
+const manualInput = document.getElementById("manualInput");
+
+const barcodeInput = document.getElementById("barcodeInput");
+
+const searchButton = document.getElementById("searchButton");
+
 const reader = document.getElementById("reader");
 
 let products = [];
 
 let scanner = null;
 
+// =========================
 // تنظيف النص
+// =========================
+
 function cleanText(value) {
   return String(value).replace(/"/g, "").replace(/\s/g, "").trim();
 }
 
+// =========================
 // تحميل المنتجات
+// =========================
+
 async function loadProducts() {
   try {
     const response = await fetch(sheetUrl);
@@ -33,9 +47,14 @@ async function loadProducts() {
 
     if (products.length === 0) {
       result.innerHTML = `
+
                 <div class="error">
-                    ❌ ما قدرنا نقرأ المنتجات من قائمة الأسعار
+
+                    ❌ ما قدرنا نقرأ المنتجات
+                    من قائمة الأسعار
+
                 </div>
+
             `;
 
       return false;
@@ -46,16 +65,23 @@ async function loadProducts() {
     console.error(error);
 
     result.innerHTML = `
+
             <div class="error">
+
                 ❌ صار خطأ بتحميل قائمة الأسعار
+
             </div>
+
         `;
 
     return false;
   }
 }
 
+// =========================
 // قراءة CSV
+// =========================
+
 function parseCSV(csvText) {
   const lines = csvText.trim().split(/\r?\n/);
 
@@ -110,7 +136,10 @@ function parseCSV(csvText) {
   return data;
 }
 
+// =========================
 // البحث عن المنتج
+// =========================
+
 function findProduct(barcode) {
   const cleanBarcode = cleanText(barcode);
 
@@ -123,7 +152,9 @@ function findProduct(barcode) {
 
             <div class="not-found">
 
-                <h2>❌ الصنف غير موجود</h2>
+                <h2>
+                    ❌ الصنف غير موجود
+                </h2>
 
                 <p>
                     ما لقينا منتج بهذا الباركود
@@ -177,7 +208,10 @@ function findProduct(barcode) {
     `;
 }
 
+// =========================
 // تشغيل الكاميرا
+// =========================
+
 async function startScanner() {
   result.innerHTML = "";
 
@@ -206,6 +240,7 @@ async function startScanner() {
 
         qrbox: {
           width: 280,
+
           height: 150,
         },
       },
@@ -241,7 +276,8 @@ async function startScanner() {
 
                 <br><br>
 
-                تأكد أنك سمحت للموقع باستخدام الكاميرا.
+                تأكد أنك سمحت للموقع
+                باستخدام الكاميرا.
 
             </div>
 
@@ -249,10 +285,60 @@ async function startScanner() {
   }
 }
 
+// =========================
 // زر مسح الباركود
+// =========================
+
 scanButton.addEventListener("click", startScanner);
 
-// تحميل الأسعار عند فتح الصفحة
+// =========================
+// زر الإدخال اليدوي
+// =========================
+
+manualButton.addEventListener("click", () => {
+  manualInput.style.display = "block";
+
+  barcodeInput.focus();
+});
+
+// =========================
+// البحث بالباركود المكتوب
+// =========================
+
+searchButton.addEventListener("click", () => {
+  const barcode = barcodeInput.value.trim();
+
+  if (!barcode) {
+    result.innerHTML = `
+
+                <div class="error">
+
+                    ❌ اكتب رقم الباركود أولاً
+
+                </div>
+
+            `;
+
+    return;
+  }
+
+  findProduct(barcode);
+});
+
+// =========================
+// Enter للبحث
+// =========================
+
+barcodeInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    searchButton.click();
+  }
+});
+
+// =========================
+// تشغيل الموقع
+// =========================
+
 async function initialize() {
   result.innerHTML = `
 
