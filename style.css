@@ -27,7 +27,7 @@ body {
 
   max-width: 500px;
 
-  padding: 35px 25px;
+  padding: 30px 22px;
 
   text-align: center;
 
@@ -45,13 +45,13 @@ body {
 ========================= */
 
 .logo {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .logo img {
-  width: 150px;
+  width: 110px;
 
-  max-width: 65%;
+  max-width: 45%;
 
   height: auto;
 
@@ -305,7 +305,7 @@ button {
 ========================= */
 
 .footer {
-  margin-top: 35px;
+  margin-top: 30px;
 
   padding-top: 18px;
 
@@ -330,4 +330,41 @@ button {
 
 .footer strong {
   color: #aaa;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  .container {
+    padding: 25px 18px;
+    border-radius: 20px;
+  }
+
+  .logo img {
+    width: 110px;
+    max-width: 40%;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 17px;
+    padding: 15px;
+  }
+
+  .price {
+    font-size: 34px;
+  }
 }
